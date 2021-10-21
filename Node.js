@@ -106,9 +106,6 @@ module.exports = class Node {
         for (let i = 0; i < input.length; i = i + 16) {
             IV = AES.bytesToString(IV);
             let encryptedBlock = AES.encrypt(IV, key);
-
-            this.log('Encrypted block: ' + encryptedBlock);
-
             let plainText = AES.padding(input.slice(i, i + 16));
             let cypherText = this.applyXOR(encryptedBlock, plainText)
 
